@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                 🔓
               </span> 
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-avito-blue">
-                АвитоАнблок
+                AvitoUnlock
               </span>
             </a>
           </div>
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
           
           <div className="flex space-x-4 items-center">
             <span className="hidden md:block text-foreground/70">
-              <span className="emoji-bounce mr-1">📞</span> +7 (XXX) XXX-XX-XX
+              <span className="emoji-bounce mr-1">📞</span> +7 (982) 971-01-74
             </span>
             <Button 
               onClick={scrollToForm}

@@ -43,39 +43,6 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
           </ScrollFadeSection>
-          
-          <ScrollFadeSection delay={200}>
-            <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-avito-blue rounded-2xl blur opacity-30"></div>
-              <div className="relative bg-card rounded-2xl p-6 shadow-xl border border-primary/10 float">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-avito-blue rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🔐</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Аккаунт заблокирован</h3>
-                    <p className="text-sm text-muted-foreground">Срочно требуется разблокировка</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="h-8 bg-muted rounded animate-pulse"></div>
-                  <div className="h-8 bg-muted rounded animate-pulse"></div>
-                  <div className="h-8 bg-muted rounded animate-pulse"></div>
-                </div>
-                
-                <div className="mt-6 flex justify-between items-center">
-                  <div className="text-sm font-medium flex items-center">
-                    <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2"></span> 
-                    Ограниченный доступ
-                  </div>
-                  <div className="bg-avito-green text-white text-xs px-3 py-1 rounded-full">
-                    Можно разблокировать
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollFadeSection>
         </div>
       </div>
       

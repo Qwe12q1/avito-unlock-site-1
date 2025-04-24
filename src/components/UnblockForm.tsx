@@ -1,27 +1,26 @@
 import React from 'react';
-import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from '@/components/ui/use-toast';
 import ScrollFadeSection from './ScrollFadeSection';
 
 const formSchema = z.object({
-  email: z.string().email({ message: 'Введите корректный email' }),
+  email: z.string().email({ message: 'Укажите корректный email-адрес' }),
   name: z.string().min(2, { message: 'Имя должно содержать минимум 2 символа' }),
-  blockReason: z.string().min(3, { message: 'Укажите причину блокировки' }),
-  comments: z.string().min(10, { message: 'Комментарий должен содержать минимум 10 символов' }),
+  reason: z.string().min(5, { message: 'Укажите причину блокировки' }),
+  comment: z.string().min(10, { message: 'Комментарий должен содержать минимум 10 символов' }),
+  contact: z.string().min(3, { message: 'Укажите контактные данные для связи' }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,132 +31,141 @@ const UnblockForm: React.FC = () => {
     defaultValues: {
       email: '',
       name: '',
-      blockReason: '',
-      comments: '',
+      reason: '',
+      comment: '',
+      contact: '',
     },
   });
 
-  function onSubmit(values: FormValues) {
+  const onSubmit = (values: FormValues) => {
     console.log(values);
-    toast({
-      title: "Заявка отправлена! ✅",
-      description: "Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время",
-    });
-    
+    // Здесь будет логика отправки формы
+    alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
     form.reset();
-  }
+  };
 
   return (
-    <ScrollFadeSection className="w-full max-w-3xl mx-auto">
-      <div className="bg-card p-8 rounded-2xl shadow-lg border border-primary/20">
-        <h2 className="text-3xl font-bold mb-6 text-center flex items-center justify-center gap-2">
-          <span className="emoji-bounce">📝</span> Форма заявки
-        </h2>
-        
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <span className="emoji-bounce">📧</span> Email аккаунта
-                  </FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="your@email.com" 
-                      {...field} 
-                      className="hover-scale transition-all"
+    <section id="unblock-form" className="py-20 bg-gradient-to-b from-background to-purple-50">
+      <div className="container mx-auto px-4">
+        <ScrollFadeSection>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Оставить заявку на разблокировку <span className="emoji-bounce inline-block">📝</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Заполните форму и мы свяжемся с вами в ближайшее время
+            </p>
+          </div>
+        </ScrollFadeSection>
+
+        <div className="max-w-2xl mx-auto">
+          <ScrollFadeSection delay={100}>
+            <div className="bg-card rounded-xl p-6 shadow-lg border border-primary/10">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email из заблокированного аккаунта</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="example@mail.ru" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </FormControl>
-                  <FormDescription>
-                    Укажите email от заблокированного аккаунта
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <span className="emoji-bounce">👤</span> Имя в профиле
-                  </FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="Иван Иванов" 
-                      {...field} 
-                      className="hover-scale transition-all"
+                    
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Имя с аккаунта</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Иван Иванов" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </FormControl>
-                  <FormDescription>
-                    Имя, указанное в вашем заблокированном аккаунте
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="blockReason"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <span className="emoji-bounce">🔒</span> Причина блокировки
-                  </FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="Например: нарушение правил сервиса" 
-                      {...field} 
-                      className="hover-scale transition-all"
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Укажите причину, по которой ваш аккаунт был заблокирован
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="comments"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <span className="emoji-bounce">💬</span> Комментарий
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea 
-                      placeholder="Опишите ситуацию подробнее..." 
-                      className="min-h-32 hover-scale transition-all"
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Укажите, что по вашему мнению могло привести к блокировке
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <Button 
-              type="submit" 
-              className="w-full py-6 text-lg shake-animation"
-            >
-              <span className="mr-2 emoji-bounce">🚀</span> Отправить заявку
-            </Button>
-          </form>
-        </Form>
+                  </div>
+                  
+                  <FormField
+                    control={form.control}
+                    name="reason"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Причина блокировки</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Укажите официальную причину блокировки" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="comment"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Комментарий</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Опишите, что, по вашему мнению, могло привести к блокировке" 
+                            className="min-h-[120px]" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="contact"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Контакт для связи</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Укажите ваш Telegram/WhatsApp для связи" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full pulse-soft"
+                    size="lg"
+                  >
+                    <span className="mr-2 emoji-bounce">🚀</span>
+                    Отправить заявку
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </ScrollFadeSection>
+        </div>
       </div>
-    </ScrollFadeSection>
+    </section>
   );
 };
 
