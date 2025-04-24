@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
                 <img 
                   src="https://cdn.poehali.dev/files/c9f211da-90f7-4667-b9f2-bf1550e71200.png" 
                   alt="Telegram" 
-                  width="24" 
-                  height="24" 
+                  width="32" 
+                  height="32" 
                   className="object-contain"
                 />
               </a>
