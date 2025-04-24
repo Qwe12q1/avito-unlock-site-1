@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <ScrollFadeSection>
             <div className="text-center md:text-left space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-center md:text-left">
                 Разблокировка аккаунта <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-avito-blue">Авито</span>
               </h1>
               
