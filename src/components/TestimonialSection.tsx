@@ -59,7 +59,7 @@ const TestimonialSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20">
+    <section id="testimonial-section" className="py-20">
       <div className="container mx-auto px-4">
         <ScrollFadeSection>
           <div className="text-center mb-16">

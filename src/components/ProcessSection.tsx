@@ -25,7 +25,7 @@ const ProcessSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section id="process-section" className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <ScrollFadeSection>
           <div className="text-center mb-16">

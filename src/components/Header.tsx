@@ -11,6 +11,13 @@ const Header: React.FC = () => {
     }
   };
   
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -46,18 +53,24 @@ const Header: React.FC = () => {
           </div>
           
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
-              Услуги
-            </a>
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
+            <button 
+              onClick={() => scrollToSection('process-section')}
+              className="text-foreground/70 hover:text-primary transition-colors"
+            >
               Как это работает
-            </a>
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonial-section')} 
+              className="text-foreground/70 hover:text-primary transition-colors"
+            >
               Отзывы
-            </a>
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq-section')} 
+              className="text-foreground/70 hover:text-primary transition-colors"
+            >
               FAQ
-            </a>
+            </button>
           </nav>
           
           <div className="flex space-x-4 items-center">

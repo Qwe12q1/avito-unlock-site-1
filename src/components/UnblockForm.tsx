@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,6 +13,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { toast } from '@/components/ui/use-toast';
+import { Toaster } from '@/components/ui/toaster';
 import ScrollFadeSection from './ScrollFadeSection';
 
 const formSchema = z.object({
@@ -26,6 +28,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const UnblockForm: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,11 +41,55 @@ const UnblockForm: React.FC = () => {
     },
   });
 
-  const onSubmit = (values: FormValues) => {
-    console.log(values);
-    // Здесь будет логика отправки формы
-    alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-    form.reset();
+  const onSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      const botToken = '8139322919:AAEgUu5JlVhYLBFDDF5rf7vL7CDWpkjNWko';
+      const chatId = '6337423204';
+      
+      const message = `
+📝 Новая заявка на разблокировку:
+
+👤 Имя: ${values.name}
+📧 Email: ${values.email}
+❌ Причина блокировки: ${values.reason}
+💬 Комментарий: ${values.comment}
+📞 Контакт: ${values.contact}
+      `;
+      
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML',
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке заявки');
+      }
+      
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Ошибка при отправке формы:', error);
+      toast({
+        title: "Ошибка при отправке",
+        description: "Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -124,7 +172,7 @@ const UnblockForm: React.FC = () => {
                         <FormLabel>Комментарий</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Опишите, что, по вашему мнению, могло привести к блокировке" 
+                            placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Укажите также ваш Telegram/WhatsApp для связи" 
                             className="min-h-[120px]" 
                             {...field} 
                           />
@@ -155,9 +203,16 @@ const UnblockForm: React.FC = () => {
                     type="submit" 
                     className="w-full pulse-soft"
                     size="lg"
+                    disabled={isSubmitting}
                   >
-                    <span className="mr-2 emoji-bounce">🚀</span>
-                    Отправить заявку
+                    {isSubmitting ? (
+                      <>Отправка...</>
+                    ) : (
+                      <>
+                        <span className="mr-2 emoji-bounce">🚀</span>
+                        Отправить заявку
+                      </>
+                    )}
                   </Button>
                 </form>
               </Form>
@@ -165,6 +220,7 @@ const UnblockForm: React.FC = () => {
           </ScrollFadeSection>
         </div>
       </div>
+      <Toaster />
     </section>
   );
 };

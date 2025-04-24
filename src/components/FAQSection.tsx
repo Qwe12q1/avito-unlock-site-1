@@ -32,7 +32,7 @@ const FAQSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section id="faq-section" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <ScrollFadeSection>
           <div className="text-center mb-16">
