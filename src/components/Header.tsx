@@ -35,7 +35,7 @@ const Header: React.FC = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b shadow-sm py-3' 
+          ? 'bg-background/90 backdrop-blur-xl border-b shadow-sm py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
               <span className={`emoji-bounce mr-2 transition-all ${isScrolled ? 'text-primary' : ''}`}>
                 🔓
               </span> 
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-avito-blue">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 font-bold">
                 AvitoUnlock
               </span>
             </a>
@@ -55,28 +55,35 @@ const Header: React.FC = () => {
           <nav className="hidden md:flex space-x-8">
             <button 
               onClick={() => scrollToSection('process-section')}
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-foreground/80 hover:text-primary transition-colors relative group"
             >
               Как это работает
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </button>
             <button 
               onClick={() => scrollToSection('testimonial-section')} 
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-foreground/80 hover:text-primary transition-colors relative group"
             >
               Отзывы
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </button>
             <button 
               onClick={() => scrollToSection('faq-section')} 
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-foreground/80 hover:text-primary transition-colors relative group"
             >
               FAQ
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </button>
+            <div className="text-foreground/70 flex items-center">
+              <span className="mr-2">📞</span>
+              <span>+7 (982) 971-01-74</span>
+            </div>
           </nav>
           
           <div className="flex items-center">
             <Button 
               onClick={scrollToForm}
-              className={`${!isScrolled ? 'bg-white text-primary hover:bg-white/90' : ''}`}
+              className={`premium-shadow button-shine ${!isScrolled ? 'bg-white text-primary hover:bg-white/90' : ''}`}
             >
               <span className="emoji-bounce mr-1">📝</span> Оставить заявку
             </Button>

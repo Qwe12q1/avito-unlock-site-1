@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Светлый фон */
-    --foreground: 240 5.9% 10%;
+    --background: 220 33% 98%; /* Более нейтральный светлый фон */
+    --foreground: 240 10% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 5.9% 10%;
+    --card-foreground: 240 10% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 5.9% 10%;
+    --popover-foreground: 240 10% 12%;
 
-    --primary: 258 90% 66%; /* Фиолетовый */
+    --primary: 258 85% 62%; /* Более насыщенный фиолетовый */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 25% 27%; /* Тёмно-синий */
+    --secondary: 215 30% 25%; /* Более глубокий тёмно-синий */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 240 5% 50%;
 
-    --accent: 240 5.9% 10%;
+    --accent: 240 10% 12%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 258 90% 66%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 258 85% 62%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 240 10% 4%;
+    --background: 240 12% 6%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 8%;
+    --card: 240 12% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 8%;
+    --popover: 240 12% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 258 90% 66%;
+    --primary: 258 85% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 25% 27%;
+    --secondary: 215 30% 25%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 240 5% 18%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 240 3.7% 15.9%;
+    --accent: 240 5% 18%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 258 90% 66%;
+    --border: 240 5% 18%;
+    --input: 240 5% 18%;
+    --ring: 258 85% 62%;
   }
 }
 
@@ -99,7 +99,7 @@
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in-section.is-visible {
@@ -120,9 +120,78 @@
 
 .emoji-bounce {
   display: inline-block;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .emoji-bounce:hover {
-  transform: scale(1.4) translateY(-5px) rotate(10deg);
+  transform: scale(1.5) translateY(-6px) rotate(12deg);
+}
+
+/* Градиентная подсветка для премиального эффекта */
+.premium-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, rgba(155, 135, 245, 0.4), rgba(230, 230, 255, 0.2), rgba(155, 135, 245, 0.4));
+  z-index: -1;
+  border-radius: calc(var(--radius) + 2px);
+}
+
+/* Эффект блеска для кнопок */
+.button-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(45deg) translate(-100%, -25%);
+  animation: shine 3s infinite ease-in-out;
+  opacity: 0;
+}
+
+.button-shine:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes shine {
+  0% {
+    transform: rotate(25deg) translate(-100%, -25%);
+  }
+  100% {
+    transform: rotate(25deg) translate(100%, 25%);
+  }
+}
+
+/* Профессиональные тени */
+.premium-shadow {
+  box-shadow: 0 4px 24px -6px rgba(155, 135, 245, 0.25), 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.premium-shadow:hover {
+  box-shadow: 0 8px 30px -6px rgba(155, 135, 245, 0.35), 0 10px 20px -3px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Стеклянный эффект */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
