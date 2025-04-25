@@ -79,7 +79,7 @@ const FormInputs: React.FC<FormInputsProps> = ({ form }) => {
             <FormLabel>Комментарий</FormLabel>
             <FormControl>
               <Textarea 
-                placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Укажите также ваш Telegram/WhatsApp для связи" 
+                placeholder="Опишите, что, по вашему мнению, могло привести к блокировке" 
                 className="min-h-[120px]" 
                 {...field} 
               />
