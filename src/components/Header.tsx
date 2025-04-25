@@ -74,10 +74,6 @@ const Header: React.FC = () => {
               FAQ
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </button>
-            <div className="text-foreground/70 flex items-center glass-effect px-3 py-1 rounded-full">
-              <span className="mr-2 text-primary">📞</span>
-              <span>+7 (982) 971-01-74</span>
-            </div>
           </nav>
           
           <div className="flex items-center">

@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             
             <div className="pt-4">
               <a 
-                href="https://t.me/avitounlock" 
+                href="https://t.me/avito_unlock" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-md transition-colors premium-shadow"
