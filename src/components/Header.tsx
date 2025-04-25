@@ -35,7 +35,7 @@ const Header: React.FC = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/90 backdrop-blur-xl border-b shadow-sm py-3' 
+          ? 'bg-white/70 backdrop-blur-xl border-b shadow-sm py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -74,8 +74,8 @@ const Header: React.FC = () => {
               FAQ
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
             </button>
-            <div className="text-foreground/70 flex items-center">
-              <span className="mr-2">📞</span>
+            <div className="text-foreground/70 flex items-center glass-effect px-3 py-1 rounded-full">
+              <span className="mr-2 text-primary">📞</span>
               <span>+7 (982) 971-01-74</span>
             </div>
           </nav>
@@ -83,7 +83,10 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <Button 
               onClick={scrollToForm}
-              className={`premium-shadow button-shine ${!isScrolled ? 'bg-white text-primary hover:bg-white/90' : ''}`}
+              className={`premium-shadow button-shine rounded-full ${
+                !isScrolled 
+                  ? 'bg-white/80 text-primary hover:bg-white/90 backdrop-blur-sm' 
+                  : ''}`}
             >
               <span className="emoji-bounce mr-1">📝</span> Оставить заявку
             </Button>
