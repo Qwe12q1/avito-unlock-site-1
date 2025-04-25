@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from '@/components/ui/use-toast';
 import { Toaster } from '@/components/ui/toaster';
+import { toast } from '@/components/ui/use-toast';
 import ScrollFadeSection from '../ScrollFadeSection';
 import FormHeader from './FormHeader';
 import FormContent from './FormContent';
-import { TelegramService } from './TelegramService';
 import { formSchema, FormValues } from './FormSchema';
+import { TelegramService } from './TelegramService';
 
 const UnblockForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +23,7 @@ const UnblockForm: React.FC = () => {
     },
   });
 
-  const handleSubmit = async (values: FormValues) => {
+  const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     
     try {
@@ -61,7 +61,7 @@ const UnblockForm: React.FC = () => {
             <div className="bg-card rounded-xl p-6 shadow-lg border border-primary/10">
               <FormContent 
                 form={form} 
-                onSubmit={handleSubmit} 
+                onSubmit={onSubmit} 
                 isSubmitting={isSubmitting} 
               />
             </div>
