@@ -13,14 +13,14 @@ const HeroSection: React.FC = () => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-purple-50 to-background pt-20 pb-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="flex justify-center w-full">
           <ScrollFadeSection>
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-6 max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-center">
                 Разблокировка аккаунта <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-avito-blue">Авито</span>
               </h1>
               
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-muted-foreground text-center">
                 Вернём доступ к вашему аккаунту <span className="emoji-bounce inline-block">⚡</span> 
                 Быстро, легально и надёжно!
               </p>
