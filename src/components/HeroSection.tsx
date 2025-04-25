@@ -15,8 +15,8 @@ const HeroSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <ScrollFadeSection>
-            <div className="text-center md:text-left space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-center md:text-left">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-center">
                 Разблокировка аккаунта <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-avito-blue">Авито</span>
               </h1>
               
@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
                 Быстро, легально и надёжно!
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                 <Button 
                   size="lg" 
                   className="pulse-soft"
