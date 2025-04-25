@@ -27,24 +27,6 @@ const Footer: React.FC = () => {
             <p className="text-muted-foreground">
               Профессиональная помощь с разблокировкой аккаунтов Авито. Работаем с 2024 года.
             </p>
-            
-            <div className="pt-4">
-              <a 
-                href="https://t.me/avito_unlock" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-md transition-colors premium-shadow"
-              >
-                <img 
-                  src="https://cdn.poehali.dev/files/c9f211da-90f7-4667-b9f2-bf1550e71200.png" 
-                  alt="Telegram" 
-                  width="20" 
-                  height="20" 
-                  className="object-contain mr-2"
-                />
-                Telegram
-              </a>
-            </div>
           </div>
           
           <div className="md:w-1/3 space-y-4">
@@ -73,18 +55,23 @@ const Footer: React.FC = () => {
           
           <div className="md:w-1/3 space-y-4">
             <h4 className="font-medium text-lg">Контакты</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center glass-effect rounded-lg px-4 py-2.5 inline-block">
-                <span className="mr-2 text-primary">📞</span>
-                <span>+7 (982) 971-01-74</span>
-              </li>
-              <li className="flex items-center glass-effect rounded-lg px-4 py-2.5 inline-block">
-                <span className="mr-2 text-primary">✉️</span>
-                <a href="mailto:info@avitounlock.ru" className="hover:text-primary transition-colors">
-                  info@avitounlock.ru
-                </a>
-              </li>
-            </ul>
+            <div className="pt-2">
+              <a 
+                href="https://t.me/avito_unlock" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-md transition-colors premium-shadow"
+              >
+                <img 
+                  src="https://cdn.poehali.dev/files/c9f211da-90f7-4667-b9f2-bf1550e71200.png" 
+                  alt="Telegram" 
+                  width="20" 
+                  height="20" 
+                  className="object-contain mr-2"
+                />
+                Telegram
+              </a>
+            </div>
           </div>
         </div>
         
