@@ -1,13 +1,11 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import ScrollFadeSection from './ScrollFadeSection';
 
 interface TestimonialProps {
   name: string;
   date: string;
   text: string;
-  image: string;
 }
 
 const TestimonialSection: React.FC = () => {
@@ -15,20 +13,17 @@ const TestimonialSection: React.FC = () => {
     {
       name: "Алексей В.",
       date: "1 января 2025",
-      text: "Огромное спасибо команде AvitoUnlock! Мой аккаунт был заблокирован из-за каких-то подозрительных действий, хотя я просто размещал свои объявления как обычно. Обратился к ребятам, и через 2 дня аккаунт уже разблокировали. Очень оперативно!",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      text: "Огромное спасибо команде AvitoUnlock! Мой аккаунт был заблокирован из-за каких-то подозрительных действий, хотя я просто размещал свои объявления как обычно. Обратился к ребятам, и через 2 дня аккаунт уже разблокировали. Очень оперативно!"
     },
     {
       name: "Марина К.",
       date: "11 ноября 2024",
-      text: "Уже не надеялась вернуть свой аккаунт с историей в 3 года и хорошими отзывами. Но AvitoUnlock справились! Очень доволна результатом, профессионально и без лишних вопросов. Рекомендую всем, кто столкнулся с блокировкой.",
-      image: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      text: "Уже не надеялась вернуть свой аккаунт с историей в 3 года и хорошими отзывами. Но AvitoUnlock справились! Очень доволна результатом, профессионально и без лишних вопросов. Рекомендую всем, кто столкнулся с блокировкой."
     },
     {
       name: "Дмитрий П.",
       date: "21 марта 2025",
-      text: "Когда мой бизнес-аккаунт заблокировали, я думал это конец - все наработки и клиенты пропадут. Обратился в AvitoUnlock как в последнюю надежду. Как же я был рад, когда через 3 дня получил полный доступ обратно! Теперь рекомендую вас всем знакомым.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      text: "Когда мой бизнес-аккаунт заблокировали, я думал это конец - все наработки и клиенты пропадут. Обратился в AvitoUnlock как в последнюю надежду. Как же я был рад, когда через 3 дня получил полный доступ обратно! Теперь рекомендую вас всем знакомым."
     }
   ];
 
@@ -55,15 +50,9 @@ const TestimonialSection: React.FC = () => {
             <ScrollFadeSection key={index} delay={index * 0.1}>
               <Card className="h-full shadow-sm hover:shadow-md transition-shadow bg-white/70 backdrop-blur-sm border-primary/10">
                 <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <Avatar className="h-12 w-12 mr-4 ring-2 ring-primary/20">
-                      <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="font-medium">{testimonial.name}</div>
-                      <div className="text-sm text-foreground/60">{testimonial.date}</div>
-                    </div>
+                  <div className="mb-4">
+                    <div className="font-medium">{testimonial.name}</div>
+                    <div className="text-sm text-foreground/60">{testimonial.date}</div>
                   </div>
                   <div className="relative">
                     <span className="absolute top-0 left-0 text-6xl text-primary/10 font-serif">❝</span>
