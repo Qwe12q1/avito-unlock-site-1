@@ -3,11 +3,15 @@ import { Button } from '@/components/ui/button';
 import ScrollFadeSection from './ScrollFadeSection';
 
 const HeroSection: React.FC = () => {
-  const scrollToForm = () => {
+  const scrollToForm = (): void => {
     const form = document.getElementById('unblock-form');
     if (form) {
       form.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const redirectToTelegram = (): void => {
+    window.open('https://t.me/egorstos', '_blank');
   };
 
   return (
@@ -65,7 +69,7 @@ const HeroSection: React.FC = () => {
                   variant="outline" 
                   size="lg"
                   className="border-primary/20 hover:border-primary/50 bg-white/50 backdrop-blur-sm text-lg py-7 rounded-xl glass-effect"
-                  onClick={scrollToForm}
+                  onClick={redirectToTelegram}
                 >
                   <span className="mr-2 emoji-bounce">📱</span> Связаться с нами
                 </Button>
