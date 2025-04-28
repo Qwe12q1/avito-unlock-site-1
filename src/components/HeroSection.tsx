@@ -10,10 +10,6 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const redirectToTelegram = (): void => {
-    window.open('https://t.me/egorstos', '_blank');
-  };
-
   return (
     <div className="relative overflow-hidden pt-32 pb-24">
       {/* Фоновый градиент */}
@@ -64,14 +60,6 @@ const HeroSection: React.FC = () => {
                   <span className="mr-2 emoji-bounce">🔓</span> 
                   <span className="relative z-10">Разблокировать аккаунт</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-primary/20 hover:border-primary/50 bg-white/50 backdrop-blur-sm text-lg py-7 rounded-xl glass-effect"
-                  onClick={redirectToTelegram}
-                >
-                  <span className="mr-2 emoji-bounce">📱</span> Связаться с нами
                 </Button>
               </div>
             </ScrollFadeSection>
