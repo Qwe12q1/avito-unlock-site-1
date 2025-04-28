@@ -95,7 +95,7 @@ const FormInputs: React.FC<FormInputsProps> = ({ form }) => {
             <FormLabel className="text-sm font-medium">Комментарий (необязательно)</FormLabel>
             <FormControl>
               <Textarea 
-                placeholder="Опишите, что, по вашему мнению, могло привести к блокировке" 
+                placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Также уточните, сколько лет было вашему профилю и сколько было отзывов на момент блокировки" 
                 className="resize-none min-h-[120px] bg-white/80" 
                 {...field} 
               />
