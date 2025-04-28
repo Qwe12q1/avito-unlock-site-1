@@ -172,7 +172,7 @@ const UnblockForm: React.FC = () => {
                         <FormLabel>Комментарий</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Укажите также ваш Telegram/WhatsApp для связи" 
+                            placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Также уточните, сколько лет было вашему профилю и сколько было отзывов на момент блокировки" 
                             className="min-h-[120px]" 
                             {...field} 
                           />
