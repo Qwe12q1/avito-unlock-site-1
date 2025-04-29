@@ -1,9 +1,8 @@
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { FormValues } from './FormSchema';
 
 interface FormInputsProps {
@@ -12,91 +11,61 @@ interface FormInputsProps {
 
 const FormInputs: React.FC<FormInputsProps> = ({ form }) => {
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-medium">Имя</FormLabel>
+              <FormLabel>Имя</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="Иван Иванов" 
-                  {...field} 
-                  className="bg-white/80" 
-                />
+                <Input placeholder="Введите ваше имя" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
-          name="phone"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-medium">Телефон</FormLabel>
+              <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="+7 (999) 123-45-67" 
-                  {...field} 
-                  className="bg-white/80"
-                />
+                <Input placeholder="Введите ваш email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
       </div>
-      
+
       <FormField
         control={form.control}
-        name="email"
+        name="reason"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="text-sm font-medium">Email</FormLabel>
+            <FormLabel>Причина блокировки</FormLabel>
             <FormControl>
-              <Input 
-                placeholder="example@mail.ru" 
-                {...field} 
-                className="bg-white/80" 
-              />
+              <Input placeholder="Укажите причину блокировки" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-      
-      <FormField
-        control={form.control}
-        name="avitoId"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-sm font-medium">ID аккаунта или ссылка на профиль</FormLabel>
-            <FormControl>
-              <Input 
-                placeholder="123456789 или avito.ru/profile/12345" 
-                {...field} 
-                className="bg-white/80" 
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      
+
       <FormField
         control={form.control}
         name="comment"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="text-sm font-medium">Комментарий (необязательно)</FormLabel>
+            <FormLabel>Комментарий</FormLabel>
             <FormControl>
               <Textarea 
                 placeholder="Опишите, что, по вашему мнению, могло привести к блокировке. Также уточните, сколько лет было вашему профилю и сколько было отзывов на момент блокировки" 
-                className="resize-none min-h-[120px] bg-white/80" 
+                className="min-h-[100px]" 
                 {...field} 
               />
             </FormControl>
@@ -104,7 +73,21 @@ const FormInputs: React.FC<FormInputsProps> = ({ form }) => {
           </FormItem>
         )}
       />
-    </div>
+
+      <FormField
+        control={form.control}
+        name="contact"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Контактные данные</FormLabel>
+            <FormControl>
+              <Input placeholder="Telegram или номер телефона" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </>
   );
 };
 
